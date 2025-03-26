@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - Projectile
   - Enemy
+  - Barrier
   layers:
   - Default
   - TransparentFX

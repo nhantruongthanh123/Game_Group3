@@ -168,4 +168,13 @@ public class PLayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col) 
+    {
+        if(col.gameObject.CompareTag("Barrier")) 
+        {
+            Instantiate(hit_effect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
 }
