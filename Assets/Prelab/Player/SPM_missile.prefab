@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8681366064306783827}
   - component: {fileID: 4964326989295797261}
-  - component: {fileID: 1319153017002069802}
+  - component: {fileID: -8683825946075755577}
   - component: {fileID: 7270312825598413379}
   - component: {fileID: 6485083369319383741}
   m_Layer: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1319153017002069802
+--- !u!114 &-8683825946075755577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8568059817944904789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790af6060cf332f4fa56042eda3beb0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 184530da188bc814dbb04a8161f4e346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
@@ -163,7 +163,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -177,4 +177,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

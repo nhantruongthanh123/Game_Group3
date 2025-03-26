@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 5671151081590357982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1539, y: -0.1173, z: 0}
+  m_LocalScale: {x: 0.5113, y: 0.5113, z: 0.5113}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -201,4 +201,3 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 3872386499092568088}
   hit_effect: {fileID: 100002, guid: 3bb13251d9a72bc4787c78264731c8a9, type: 3}
-  firing_ship: {fileID: 0}

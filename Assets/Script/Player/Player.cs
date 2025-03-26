@@ -5,7 +5,7 @@ using UnityEngine;
 public class PLayer : MonoBehaviour
 {
     [SerializeField] private GameObject myBody;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 8f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform pos;
@@ -13,11 +13,12 @@ public class PLayer : MonoBehaviour
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject timerText; // Reference to the UI Text
     [SerializeField] private GameObject SPM_missile;
+    [SerializeField] private GameObject hit_effect;
     private float shieldDuration = 5f;
     private bool isShieldActive = false;
     private float shieldTimer = 0f;
     private float maxShieldTime = 10f;
-    private float maxMissileScale = 16f;
+    private float maxMissileScale = 25f;
     private float SPM_timer = 0f;
     private float maxSPM_time = 10f;
     // Start is called before the first frame update
@@ -157,5 +158,14 @@ public class PLayer : MonoBehaviour
         }
         
         
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy")) 
+        {
+            Instantiate(hit_effect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

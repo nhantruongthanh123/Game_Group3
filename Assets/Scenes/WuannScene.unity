@@ -233,8 +233,8 @@ Transform:
   m_GameObject: {fileID: 102489788}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.007122708, y: -1.4476502, z: 0}
-  m_LocalScale: {x: 0.9862889, y: 0.9862889, z: 0.9862892}
+  m_LocalPosition: {x: -0, y: -1.31, z: 0}
+  m_LocalScale: {x: 1.6461163, y: 1.6461163, z: 1.6461169}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 868813536}
@@ -865,7 +865,7 @@ GameObject:
   - component: {fileID: 868813537}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -885,7 +885,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0.5
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -896,7 +896,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!68 &868813534
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1056,8 +1056,8 @@ Transform:
   m_GameObject: {fileID: 868813532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.95, y: -0.09, z: 0}
-  m_LocalScale: {x: 0.5616, y: 0.5616, z: 0.5616}
+  m_LocalPosition: {x: -5.784, y: 0.3472, z: 0}
+  m_LocalScale: {x: 0.23177233, y: 0.23177233, z: 0.23177233}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 102489789}
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBody: {fileID: 868813532}
-  jumpForce: 5
+  jumpForce: 8
   moveSpeed: 5
   rb: {fileID: 868813533}
   pos: {fileID: 868813536}
@@ -1084,6 +1084,7 @@ MonoBehaviour:
   shield: {fileID: 102489788}
   timerText: {fileID: 1519138086}
   SPM_missile: {fileID: 8568059817944904789, guid: c81a743921563ae4d84e32cdcbc5b862, type: 3}
+  hit_effect: {fileID: 100002, guid: 3bb13251d9a72bc4787c78264731c8a9, type: 3}
 --- !u!1 &1263024527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1204,12 @@ MonoBehaviour:
   boltPrefab: {fileID: 8891346013359925066, guid: 38af591e1c689574491be240f9d21ee0, type: 3}
   pulsePrelab: {fileID: 9093032991393312155, guid: d44b5fa96e2134d4e8c388a435affa1c, type: 3}
   chargedPrefab: {fileID: 8367054956947268648, guid: 0e243add79cad574ab4f80e98518e161, type: 3}
+  enemy1: {fileID: 145718524027340744, guid: 3bacf9f9fc326374883588c2e425c00e, type: 3}
+  enemy2: {fileID: 6182070872722082451, guid: 5fd874f0b22c1d741934a8eebc00f7db, type: 3}
+  enemy3: {fileID: 1344616388129155081, guid: d5603e1f22100d7419651b46c9dff0bc, type: 3}
+  enemy4: {fileID: 6005506024055395176, guid: 5a45480910b53eb499868d2aca4d292d, type: 3}
+  enemy5: {fileID: 1063725002897503456, guid: 4ff6c0bce6c4bd749bc85943a8ef2eb5, type: 3}
+  enemy6: {fileID: 3483787023523954147, guid: 019d6de6ff7bba645ae5cf0743f8584b, type: 3}
 --- !u!4 &1493602919
 Transform:
   m_ObjectHideFlags: 0

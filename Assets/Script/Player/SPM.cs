@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class SPM : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private Rigidbody2D rb;
@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 5f); 
     }
 
     // Update is called once per frame
@@ -22,8 +22,6 @@ public class Bullet : MonoBehaviour
 
 		if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Projectile")) {
 			Instantiate(hit_effect, transform.position, Quaternion.identity);
-            
-			Destroy(gameObject);
 		}
 	}
 }
