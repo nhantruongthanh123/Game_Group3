@@ -41,17 +41,21 @@ public class PLayer : MonoBehaviour
 
     public void Move() 
     {
-        
+        float horizontalMovement = 0f;
         if(Input.GetKey(KeyCode.A)) 
         {
             //rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-            pos.position += moveSpeed * Time.deltaTime * Vector3.left;
+            //pos.position += moveSpeed * Time.deltaTime * Vector3.left;
+            horizontalMovement = -moveSpeed;
         }
         else if(Input.GetKey(KeyCode.D)) 
         {
             //rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-            pos.position += moveSpeed * Time.deltaTime * Vector3.right;
+            //pos.position += moveSpeed * Time.deltaTime * Vector3.right;
+            horizontalMovement = moveSpeed;
         }
+
+        rb.linearVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
         
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -79,11 +83,21 @@ public class PLayer : MonoBehaviour
             StartCoroutine(ShieldTimerCount());
         }
     }
+
+    void FreezeX()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;;
+    }
+    void UnFreezeX()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
     System.Collections.IEnumerator ActivateShield()
     {
         // Set the shield as active
         isShieldActive = true;
         shield.SetActive(true);
+        FreezeX();
 
         // Wait for the shield duration
         yield return new WaitForSeconds(shieldDuration);
@@ -91,6 +105,7 @@ public class PLayer : MonoBehaviour
         // Deactivate the shield after the duration
         shield.SetActive(false);
         isShieldActive = false;
+        UnFreezeX();
     }
     
     System.Collections.IEnumerator ShieldTimerCount() 
@@ -140,6 +155,7 @@ public class PLayer : MonoBehaviour
             yield return new WaitForSeconds(1f);
             SPM_timer++;
         }
+        
         
     }
 }
