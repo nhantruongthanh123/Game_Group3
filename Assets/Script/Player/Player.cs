@@ -162,10 +162,11 @@ public class PLayer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy")) 
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")) 
         {
             Instantiate(hit_effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            GameManager.Instance.isGameOver = true;
         }
     }
 
@@ -175,6 +176,7 @@ public class PLayer : MonoBehaviour
         {
             Instantiate(hit_effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            GameManager.Instance.isGameOver = true;
         }
     }
 }

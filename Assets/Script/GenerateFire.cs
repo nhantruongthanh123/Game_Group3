@@ -20,6 +20,10 @@ public class GenerateFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.isGameOver) // Nếu game over
+        {
+            CancelInvoke("spawnFire"); // Hủy việc tăng điểm
+        }
     }
 
     void spawnFire()

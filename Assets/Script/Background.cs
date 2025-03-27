@@ -15,6 +15,11 @@ public class Background : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.isGameOver) // Nếu game over
+        {
+            return;
+        }
+
         foreach (var bg in backgrounds)
         {
             bg.position += Vector3.left * speed * Time.deltaTime;
