@@ -22,6 +22,7 @@ public class SPM : MonoBehaviour
 
 		if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Projectile")) {
 			Instantiate(hit_effect, transform.position, Quaternion.identity);
+            Destroy(col.gameObject); // Destroy the enemy
 		}
 	}
 }

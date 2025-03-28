@@ -212,7 +212,6 @@ public class PLayer : MonoBehaviour
                 shield.SetActive(false);
                 isShieldActive = false;
                 UnFreezeX();
-                StartCoroutine(ActivateInvincibility());
             }
             //GameManager.Instance.isGameOver = true;
         }
