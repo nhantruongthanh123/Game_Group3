@@ -28,10 +28,13 @@ public class GameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
         }
 
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed >= 5.0f) {
-            speed += 1;
-            timeElapsed = 0;
+        if (speed < 30f)
+        {
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed >= 5.0f) {
+                speed += 1;
+                timeElapsed = 0;
+            }
         }
     }
 

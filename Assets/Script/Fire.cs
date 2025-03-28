@@ -14,6 +14,7 @@ public class Fire : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
+        speed = GameManager.Instance.speed; // Lấy tốc độ từ GameManager
         if (transform.position.x <= -13)
         {
             Destroy(gameObject);
