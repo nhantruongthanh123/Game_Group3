@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 6855751229632570715}
   - component: {fileID: 1067854161940202684}
   - component: {fileID: 2425906660479839378}
-  - component: {fileID: 3768134077376942187}
-  - component: {fileID: -818772080222847902}
   - component: {fileID: 1582683278578890201}
   m_Layer: 0
   m_Name: Huge 1 1
@@ -121,7 +119,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0.6
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -133,127 +131,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 2
---- !u!68 &3768134077376942187
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063725002897503456}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.0012074113, y: -2.2032015}
-  - {x: -0.22575882, y: -2.1840415}
-  - {x: -0.32705238, y: -1.8914927}
-  - {x: -0.57469803, y: -1.8944103}
-  - {x: -0.5975096, y: -1.5137271}
-  - {x: -0.8230203, y: -1.5220331}
-  - {x: -0.82630897, y: -0.8434566}
-  - {x: -0.5787461, y: -0.83616245}
-  - {x: -0.5887415, y: -0.71591777}
-  - {x: -0.5223917, y: -0.63530594}
-  - {x: -0.5245564, y: -0.2954292}
-  - {x: -0.35992867, y: -0.2202206}
-  - {x: -0.2958392, y: 0.22003233}
-  - {x: -0.27909434, y: 0.8950074}
-  - {x: -0.19703683, y: 0.9644874}
-  - {x: -0.19296916, y: 1.2254264}
-  - {x: -0.25308356, y: 1.3021922}
-  - {x: -0.2227532, y: 1.4402486}
-  - {x: -0.17044452, y: 1.5066622}
-  - {x: -0.017784946, y: 2.1651828}
-  - {x: 0.1407226, y: 1.5761328}
-  - {x: 0.24148892, y: 1.4166683}
-  - {x: 0.29036453, y: 0.8748942}
-  - {x: 0.35262695, y: 0.14249822}
-  - {x: 0.38566136, y: -0.24551769}
-  - {x: 0.5547759, y: -0.30919263}
-  - {x: 0.6210578, y: -0.81868416}
-  - {x: 0.8218515, y: -0.83284503}
-  - {x: 0.83849466, y: -1.4884913}
-  - {x: 0.5986345, y: -1.4806371}
-  - {x: 0.5886381, y: -1.8754531}
-  - {x: 0.28813618, y: -1.9108882}
-  - {x: 0.24573848, y: -2.2075212}
-  - {x: -0.011892619, y: -2.1981187}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!61 &-818772080222847902
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063725002897503456}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.66, y: 4.38}
-    newSize: {x: 1.66, y: 4.38}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.66, y: 4.38}
-  m_EdgeRadius: 0
 --- !u!60 &1582683278578890201
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,13 +15,19 @@ public class PLayer : MonoBehaviour
     [SerializeField] private GameObject timerText; // Reference to the UI Text
     [SerializeField] private GameObject SPM_missile;
     [SerializeField] private GameObject hit_effect;
+    [SerializeField] private Collider2D myCollider;
     private float shieldDuration = 5f;
     private bool isShieldActive = false;
     private float shieldTimer = 0f;
     private float maxShieldTime = 10f;
-    private float maxMissileScale = 25f;
+    private float maxMissileScale = 40f;
     private float SPM_timer = 0f;
     private float maxSPM_time = 10f;
+    private float invincibilityDuration = 2f;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +36,7 @@ public class PLayer : MonoBehaviour
         shield.SetActive(false);
         StartCoroutine(ShieldTimerCount());
         StartCoroutine(SPMTimerCount());
+        myCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -136,7 +144,7 @@ public class PLayer : MonoBehaviour
         Vector3 initialScale = missile.transform.localScale;
         Vector3 targetScale = new Vector3(maxMissileScale, maxMissileScale, missile.transform.localScale.z);
 
-        float duration = 3f;
+        float duration = 2f;
         float time = 0f;
 
         while(time < duration) 
@@ -157,7 +165,15 @@ public class PLayer : MonoBehaviour
             SPM_timer++;
         }
         
-        
+    }
+
+    System.Collections.IEnumerator ActivateInvincibility() 
+    {
+        myCollider.enabled = false;
+
+        yield return new WaitForSeconds(invincibilityDuration);
+
+        myCollider.enabled = true;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -165,8 +181,19 @@ public class PLayer : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")) 
         {
             Instantiate(hit_effect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-            GameManager.Instance.isGameOver = true;
+            if(!isShieldActive) 
+            {
+                Destroy(gameObject);
+                GameManager.Instance.isGameOver = true;
+            }
+            else 
+            {
+                shield.SetActive(false);
+                isShieldActive = false;
+                UnFreezeX();
+                StartCoroutine(ActivateInvincibility());
+                
+            }
         }
     }
 
@@ -175,8 +202,19 @@ public class PLayer : MonoBehaviour
         if(col.gameObject.CompareTag("Barrier")) 
         {
             Instantiate(hit_effect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-            GameManager.Instance.isGameOver = true;
+            if(!isShieldActive) 
+            {
+                Destroy(gameObject);
+                GameManager.Instance.isGameOver = true;
+            }
+            else 
+            {
+                shield.SetActive(false);
+                isShieldActive = false;
+                UnFreezeX();
+                StartCoroutine(ActivateInvincibility());
+            }
+            //GameManager.Instance.isGameOver = true;
         }
     }
 }
