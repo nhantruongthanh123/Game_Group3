@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Button restartButton; 
     public Button backToMenuButton; 
     public GameObject gameOverPanel;
+    public float speed = 8f; 
+    private float timeElapsed = 0;
     void Start()
     {
         restartButton.onClick.AddListener(RestartGame);
@@ -24,6 +26,12 @@ public class GameManager : MonoBehaviour
         if (isGameOver)
         {
             gameOverPanel.SetActive(true);
+        }
+
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed >= 5.0f) {
+            speed += 1;
+            timeElapsed = 0;
         }
     }
 

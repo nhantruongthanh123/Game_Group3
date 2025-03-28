@@ -14,6 +14,7 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
+        speed = GameManager.Instance.speed;
     }
 
     void UnfreezeY()

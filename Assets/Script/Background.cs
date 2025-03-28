@@ -20,6 +20,8 @@ public class Background : MonoBehaviour
             return;
         }
 
+        speed = GameManager.Instance.speed; 
+
         foreach (var bg in backgrounds)
         {
             bg.position += Vector3.left * speed * Time.deltaTime;
