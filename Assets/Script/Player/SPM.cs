@@ -20,7 +20,7 @@ public class SPM : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
 
-		if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Projectile")) {
+		if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Projectile") && !col.gameObject.CompareTag("Barrier")) {
 			Instantiate(hit_effect, transform.position, Quaternion.identity);
             Destroy(col.gameObject); // Destroy the enemy
 		}
