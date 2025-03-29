@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
 
 		if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Projectile") && !col.gameObject.CompareTag("Shield")) {
 			Instantiate(hit_effect, transform.position, Quaternion.identity);
-            
 			Destroy(gameObject);
 		}
 	}
