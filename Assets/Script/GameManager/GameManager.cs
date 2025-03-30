@@ -8,13 +8,15 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static GameManager Instance;
     public bool isGameOver = false;
-    public Button restartButton; 
+    public Button restartButton;
+    public Button exitButton;
     public Button backToMenuButton; 
     public GameObject gameOverPanel;
     public float speed = 8f; 
     private float timeElapsed = 0;
     void Start()
     {
+        exitButton.onClick.AddListener(BackToMenu);
         restartButton.onClick.AddListener(RestartGame);
         backToMenuButton.onClick.AddListener(BackToMenu);
         gameOverPanel.SetActive(false);
