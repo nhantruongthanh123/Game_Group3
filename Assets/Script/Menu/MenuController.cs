@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,10 +9,12 @@ public class MenuController : MonoBehaviour
     public Button howToPlayButton;
     public GameObject howToPlayText1;
     public GameObject howToPlayText2;
+    public Button exitButton;
     void Start()
     {
         startButton.onClick.AddListener(StartGame);
         howToPlayButton.onClick.AddListener(ToggleHowToPlay);
+        exitButton.onClick.AddListener(QuitGame);
         howToPlayText1.SetActive(false);
         howToPlayText2.SetActive(false);
     }
@@ -32,5 +34,10 @@ public class MenuController : MonoBehaviour
         bool isActive = !howToPlayText1.activeSelf;
         howToPlayText1.SetActive(isActive);
         howToPlayText2.SetActive(isActive);
+    }
+    public void QuitGame()
+    {
+        Debug.Log("Quit game..."); // Khi bấm nút exit sẽ hiện dòng này trên console
+        Application.Quit();
     }
 }

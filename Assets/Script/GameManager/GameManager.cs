@@ -9,14 +9,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public bool isGameOver = false;
     public Button restartButton;
-    public Button exitButton;
+    public Button HomeButton;
     public Button backToMenuButton; 
     public GameObject gameOverPanel;
     public float speed = 8f; 
     private float timeElapsed = 0;
     void Start()
     {
-        exitButton.onClick.AddListener(BackToMenu);
+        HomeButton.onClick.AddListener(BackToMenu);
         restartButton.onClick.AddListener(RestartGame);
         backToMenuButton.onClick.AddListener(BackToMenu);
         gameOverPanel.SetActive(false);
