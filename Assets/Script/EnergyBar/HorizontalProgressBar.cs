@@ -116,7 +116,7 @@ namespace MagicPigGames
             isPaused = false;
         }
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
             if (_progressBar == null)
                 _progressBar = GetComponent<ProgressBar>();

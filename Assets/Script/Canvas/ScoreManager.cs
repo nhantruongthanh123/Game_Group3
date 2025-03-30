@@ -4,8 +4,21 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static ScoreManager Instance { get; private set; }
     public TextMeshProUGUI scoreText; // Tham chiếu đến Text UI
-    private int score = 0; // Biến lưu điểm
+    public int score = 0; // Biến lưu điểm
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this; 
+        }
+        else
+        {
+            Destroy(gameObject);
+        }   
+    }
     void Start()
     {
         UpdateScoreText();

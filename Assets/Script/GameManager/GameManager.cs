@@ -8,14 +8,19 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static GameManager Instance;
     public bool isGameOver = false;
-    public Button restartButton;
-    public Button HomeButton;
-    public Button backToMenuButton; 
-    public GameObject gameOverPanel;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button HomeButton;
+    [SerializeField] private Button backToMenuButton; 
+    [SerializeField] private Button PauseButton;
+    [SerializeField] private Button ResumeButton;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject pausePanel;
     public float speed = 8f; 
     private float timeElapsed = 0;
     void Start()
     {
+        PauseButton.onClick.AddListener(PauseGame);
+        ResumeButton.onClick.AddListener(ResumeGame);
         HomeButton.onClick.AddListener(BackToMenu);
         restartButton.onClick.AddListener(RestartGame);
         backToMenuButton.onClick.AddListener(BackToMenu);
@@ -68,5 +73,17 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(false); // Hide the game over panel
         restartButton.onClick.AddListener(RestartGame);
         backToMenuButton.onClick.AddListener(BackToMenu);
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true); 
+
+    }
+    void ResumeGame()
+    {
+        Time.timeScale = 1; 
+        pausePanel.SetActive(false);
     }
 }

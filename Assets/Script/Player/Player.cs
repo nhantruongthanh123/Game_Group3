@@ -12,7 +12,6 @@ public class PLayer : MonoBehaviour
     [SerializeField] private Transform pos;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject shield;
-    [SerializeField] private GameObject timerText; // Reference to the UI Text
     [SerializeField] private GameObject SPM_missile;
     [SerializeField] private GameObject hit_effect;
     [SerializeField] private Collider2D myCollider;
@@ -23,7 +22,9 @@ public class PLayer : MonoBehaviour
     private float maxMissileScale = 40f;
     private float SPM_timer = 0f;
     private float maxSPM_time = 10f;
-    private float invincibilityDuration = 2f;
+    private float invincibilityDuration = 1f;
+    private float shootCooldown = 0.5f;
+    private float shootTimer = 0f;
 
 
 
@@ -46,6 +47,10 @@ public class PLayer : MonoBehaviour
         Shoot();
         Shield();
         SPM();
+        if (shootTimer < shootCooldown)
+        {
+            shootTimer += Time.deltaTime;
+        }
     }
 
     public void Move() 
@@ -76,9 +81,10 @@ public class PLayer : MonoBehaviour
 
     public void Shoot() 
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0)) 
+        if(Input.GetKeyDown(KeyCode.Mouse0) && shootTimer >= shootCooldown) 
         {
             Instantiate(bullet, pos.position, bullet.transform.rotation);
+            shootTimer = 0f;
         }
     }
 
@@ -123,7 +129,6 @@ public class PLayer : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             shieldTimer++;
-            timerText.GetComponent<TextMeshProUGUI>().text = "Timer: " + shieldTimer;
         }
         
     }
@@ -178,7 +183,7 @@ public class PLayer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")) 
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Asteroid")) 
         {
             Instantiate(hit_effect, transform.position, Quaternion.identity);
             if(!isShieldActive) 
@@ -212,6 +217,7 @@ public class PLayer : MonoBehaviour
                 shield.SetActive(false);
                 isShieldActive = false;
                 UnFreezeX();
+                StartCoroutine(ActivateInvincibility());
             }
             //GameManager.Instance.isGameOver = true;
         }

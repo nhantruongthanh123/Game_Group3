@@ -200,4 +200,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb: {fileID: 3872386499092568088}
-  hit_effect: {fileID: 100002, guid: 3bb13251d9a72bc4787c78264731c8a9, type: 3}
+  hit_effect: {fileID: 100002, guid: efc5d9048f9e2fd4ca4f0a9ed01c3f95, type: 3}
+  explosion_effect: {fileID: 100002, guid: 013d0e81db13869418845914aac32ae7, type: 3}

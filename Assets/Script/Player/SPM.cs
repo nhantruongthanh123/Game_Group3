@@ -22,6 +22,12 @@ public class SPM : MonoBehaviour
 
 		if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Projectile") && !col.gameObject.CompareTag("Barrier")) {
 			Instantiate(hit_effect, transform.position, Quaternion.identity);
+            if(col.gameObject.CompareTag("Enemy")) {
+                ScoreManager.Instance.score += 100;
+            }
+            else if(col.gameObject.CompareTag("Asteroid")) {
+                ScoreManager.Instance.score += 50;
+            }
             Destroy(col.gameObject); // Destroy the enemy
 		}
 	}

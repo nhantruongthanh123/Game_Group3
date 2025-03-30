@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 5f); //Destroy the enemy after 5 seconds
     }
 
     void Update()

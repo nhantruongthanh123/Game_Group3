@@ -27,7 +27,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("NhatScene"); 
+        SceneManager.LoadScene("WuannScene"); 
     }
     public void ToggleHowToPlay()
     {

@@ -7,17 +7,17 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/NhanScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    guid: d83b60f064fe06f43aabd176c6964827
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 56cbb199e82dc9e48ba9713b2c28dae0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NhanScene.unity
     guid: d83b60f064fe06f43aabd176c6964827
   - enabled: 1
     path: Assets/Scenes/WuannScene.unity
     guid: d7ffa3d5590acaa42a677137075af269
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NhatScene.unity
     guid: f312d44334b1f3e4e832531474a50cdd
   m_configObjects:

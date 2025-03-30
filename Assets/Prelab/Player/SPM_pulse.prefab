@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7211260568388822493}
   m_Layer: 0
   m_Name: SPM_pulse
-  m_TagString: Untagged
+  m_TagString: SPM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,4 +200,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb: {fileID: 2633211664883447458}
-  hit_effect: {fileID: 100002, guid: 3bb13251d9a72bc4787c78264731c8a9, type: 3}
+  hit_effect: {fileID: 100002, guid: efc5d9048f9e2fd4ca4f0a9ed01c3f95, type: 3}
