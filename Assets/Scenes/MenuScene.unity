@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'I forgot my name, bro
+  m_text: 'Spaceship Journey
 
 '
   m_isRightToLeft: 0
