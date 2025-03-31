@@ -4,7 +4,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    private float speed = 20f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject hit_effect;
     [SerializeField] private GameObject explosion_effect;
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 3f);
     }
 
     // Update is called once per frame

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    private float speed = 10f;
     [SerializeField] private Rigidbody2D rb;
 
     void Start()

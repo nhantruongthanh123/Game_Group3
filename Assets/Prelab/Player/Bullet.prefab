@@ -201,4 +201,4 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 3872386499092568088}
   hit_effect: {fileID: 100002, guid: efc5d9048f9e2fd4ca4f0a9ed01c3f95, type: 3}
-  explosion_effect: {fileID: 100002, guid: 013d0e81db13869418845914aac32ae7, type: 3}
+  explosion_effect: {fileID: 159918, guid: 5afb41651b5015c4e9fb10ecb08547c9, type: 3}

@@ -6,24 +6,27 @@ using UnityEngine;
 public class PLayer : MonoBehaviour
 {
     [SerializeField] private GameObject myBody;
-    [SerializeField] private float jumpForce = 8f;
-    [SerializeField] private float moveSpeed = 5f;
+    private float jumpForce = 8f;
+    private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform pos;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject SPM_missile;
     [SerializeField] private GameObject hit_effect;
-    [SerializeField] private Collider2D myCollider;
+    [SerializeField] private GameObject explosion_effect;
+    [SerializeField] private GameObject smallShield;
+    //[SerializeField] private Collider2D myCollider;
+    private float smallShieldDuration = 2f;
     private float shieldDuration = 5f;
     private bool isShieldActive = false;
+    private bool isSMShieldActive = false;
     private float shieldTimer = 0f;
-    private float maxShieldTime = 10f;
+    private float maxShieldTime = 15f;
     private float maxMissileScale = 40f;
     private float SPM_timer = 0f;
-    private float maxSPM_time = 10f;
-    private float invincibilityDuration = 1f;
-    private float shootCooldown = 0.5f;
+    private float maxSPM_time = 30f;
+    private float shootCooldown = 1f;
     private float shootTimer = 0f;
 
 
@@ -35,9 +38,9 @@ public class PLayer : MonoBehaviour
         rb = myBody.GetComponent<Rigidbody2D>();
         pos = myBody.GetComponent<Transform>();
         shield.SetActive(false);
+        smallShield.SetActive(false);
         StartCoroutine(ShieldTimerCount());
         StartCoroutine(SPMTimerCount());
-        myCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -58,14 +61,10 @@ public class PLayer : MonoBehaviour
         float horizontalMovement = 0f;
         if(Input.GetKey(KeyCode.A)) 
         {
-            //rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-            //pos.position += moveSpeed * Time.deltaTime * Vector3.left;
             horizontalMovement = -moveSpeed;
         }
         else if(Input.GetKey(KeyCode.D)) 
         {
-            //rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-            //pos.position += moveSpeed * Time.deltaTime * Vector3.right;
             horizontalMovement = moveSpeed;
         }
 
@@ -94,25 +93,14 @@ public class PLayer : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F) && !isShieldActive && shieldTimer >= maxShieldTime) 
         {
             StartCoroutine(ActivateShield());
-            shieldTimer = 0f;
-            StartCoroutine(ShieldTimerCount());
         }
     }
 
-    void FreezeX()
-    {
-        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;;
-    }
-    void UnFreezeX()
-    {
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
     System.Collections.IEnumerator ActivateShield()
     {
         // Set the shield as active
         isShieldActive = true;
         shield.SetActive(true);
-        FreezeX();
 
         // Wait for the shield duration
         yield return new WaitForSeconds(shieldDuration);
@@ -120,7 +108,10 @@ public class PLayer : MonoBehaviour
         // Deactivate the shield after the duration
         shield.SetActive(false);
         isShieldActive = false;
-        UnFreezeX();
+
+        
+        shieldTimer = 0f;
+        StartCoroutine(ShieldTimerCount());
     }
     
     System.Collections.IEnumerator ShieldTimerCount() 
@@ -131,6 +122,14 @@ public class PLayer : MonoBehaviour
             shieldTimer++;
         }
         
+    }
+
+    System.Collections.IEnumerator ActivateSmallShield() {
+        smallShield.SetActive(true);
+        isSMShieldActive = true;
+        yield return new WaitForSeconds(smallShieldDuration);
+        smallShield.SetActive(false);
+        isSMShieldActive = false;
     }
 
     public void SPM() 
@@ -172,22 +171,14 @@ public class PLayer : MonoBehaviour
         
     }
 
-    System.Collections.IEnumerator ActivateInvincibility() 
-    {
-        myCollider.enabled = false;
-
-        yield return new WaitForSeconds(invincibilityDuration);
-
-        myCollider.enabled = true;
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Asteroid")) 
         {
-            Instantiate(hit_effect, transform.position, Quaternion.identity);
+            
             if(!isShieldActive) 
             {
+                Instantiate(explosion_effect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 GameManager.Instance.isGameOver = true;
             }
@@ -195,8 +186,8 @@ public class PLayer : MonoBehaviour
             {
                 shield.SetActive(false);
                 isShieldActive = false;
-                UnFreezeX();
-                StartCoroutine(ActivateInvincibility());
+                Instantiate(explosion_effect, transform.position, Quaternion.identity);
+                Destroy(collision.gameObject);
                 
             }
         }
@@ -206,20 +197,26 @@ public class PLayer : MonoBehaviour
     {
         if(col.gameObject.CompareTag("Barrier")) 
         {
-            Instantiate(hit_effect, transform.position, Quaternion.identity);
+            Instantiate(explosion_effect, transform.position, Quaternion.identity);
             if(!isShieldActive) 
             {
-                Destroy(gameObject);
-                GameManager.Instance.isGameOver = true;
+                if(isSMShieldActive) 
+                {
+                    smallShield.SetActive(false);
+                    isSMShieldActive = false;
+                }
+                else 
+                {
+                    Destroy(gameObject);
+                    GameManager.Instance.isGameOver = true;
+                }
             }
             else 
             {
                 shield.SetActive(false);
                 isShieldActive = false;
-                UnFreezeX();
-                StartCoroutine(ActivateInvincibility());
+                StartCoroutine(ActivateSmallShield());
             }
-            //GameManager.Instance.isGameOver = true;
         }
     }
 }
