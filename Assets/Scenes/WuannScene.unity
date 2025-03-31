@@ -955,6 +955,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 672752558859913028, guid: bd6b16ebae3e748678b90a25cb354102, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 672752558859913028, guid: bd6b16ebae3e748678b90a25cb354102, type: 3}
       propertyPath: shieldText
       value: 
       objectReference: {fileID: 1588379509}
@@ -1112,7 +1116,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 672752558859913035, guid: bd6b16ebae3e748678b90a25cb354102, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1588379508}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 672752558859913032, guid: bd6b16ebae3e748678b90a25cb354102, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1476829116}
   m_SourcePrefab: {fileID: 100100000, guid: bd6b16ebae3e748678b90a25cb354102, type: 3}
 --- !u!224 &495762606 stripped
 RectTransform:
@@ -6607,6 +6614,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!224 &827343087 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 672752559286385512, guid: bd6b16ebae3e748678b90a25cb354102, type: 3}
+  m_PrefabInstance: {fileID: 495762605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &848058083
 GameObject:
   m_ObjectHideFlags: 0
@@ -6921,6 +6933,7 @@ MonoBehaviour:
   hit_effect: {fileID: 100002, guid: efc5d9048f9e2fd4ca4f0a9ed01c3f95, type: 3}
   explosion_effect: {fileID: 159918, guid: 5afb41651b5015c4e9fb10ecb08547c9, type: 3}
   smallShield: {fileID: 220947337}
+  isShieldActive: 0
 --- !u!1 &966817307
 GameObject:
   m_ObjectHideFlags: 0
@@ -7940,6 +7953,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448585017}
   m_CullTransparentMesh: 1
+--- !u!1 &1476829112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 672752558859913032, guid: bd6b16ebae3e748678b90a25cb354102, type: 3}
+  m_PrefabInstance: {fileID: 495762605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1476829116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476829112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa76841caee99fc4cbadbc27e08ea6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlayBar: {fileID: 827343087}
+  sizeMin: 0
+  sizeMax: 1
+  invertProgress: 1
+  transitionTime: 0
+  rectTransform: {fileID: 495762606}
+  progress: 0
+  player: {fileID: 868813537}
+  fillDuration: 15
+  wait: 0
+  shieldText: {fileID: 1588379509}
+  activationKey: 102
 --- !u!1 &1503644661
 GameObject:
   m_ObjectHideFlags: 0

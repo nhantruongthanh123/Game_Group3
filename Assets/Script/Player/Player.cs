@@ -19,7 +19,7 @@ public class PLayer : MonoBehaviour
     //[SerializeField] private Collider2D myCollider;
     private float smallShieldDuration = 2f;
     private float shieldDuration = 5f;
-    private bool isShieldActive = false;
+    public bool isShieldActive = false;
     private bool isSMShieldActive = false;
     private float shieldTimer = 0f;
     private float maxShieldTime = 15f;
