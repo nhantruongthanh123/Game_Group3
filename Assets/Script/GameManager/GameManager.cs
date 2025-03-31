@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     void BackToMenu()
     {
+        Time.timeScale = 1; //Hủy trạng thái pause khi ấn home
         SceneManager.LoadScene("MenuScene"); // Load the main menu scene
         isGameOver = false; // Reset the game over state
         gameOverPanel.SetActive(false); // Hide the game over panel
