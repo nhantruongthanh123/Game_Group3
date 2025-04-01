@@ -20,7 +20,7 @@ public class SPM : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
 
-		if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Projectile") && !col.gameObject.CompareTag("Barrier")) {
+		if (col.gameObject.CompareTag("Enemy") || col.gameObject.CompareTag("Bullet") || col.gameObject.CompareTag("Asteroid")) {
 			Instantiate(hit_effect, transform.position, Quaternion.identity);
             if(col.gameObject.CompareTag("Enemy")) {
                 ScoreManager.Instance.score += 100;
