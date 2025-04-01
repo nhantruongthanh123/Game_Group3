@@ -20,6 +20,7 @@ public class PLayer : MonoBehaviour
     private float smallShieldDuration = 2f;
     private float shieldDuration = 5f;
     public bool isShieldActive = false;
+    private bool isShieldBreak = false;
     private bool isSMShieldActive = false;
     private float shieldTimer = 0f;
     private float maxShieldTime = 15f;
@@ -98,6 +99,11 @@ public class PLayer : MonoBehaviour
 
     System.Collections.IEnumerator ActivateShield()
     {
+        if (isShieldBreak) 
+        {
+            yield break; // Nếu đang trong thời gian hồi hoặc đã va chạm, không kích hoạt shield
+        }
+        
         // Set the shield as active
         isShieldActive = true;
         shield.SetActive(true);
@@ -109,9 +115,10 @@ public class PLayer : MonoBehaviour
         shield.SetActive(false);
         isShieldActive = false;
 
-        
         shieldTimer = 0f;
         StartCoroutine(ShieldTimerCount());
+        
+        
     }
     
     System.Collections.IEnumerator ShieldTimerCount() 
@@ -121,6 +128,7 @@ public class PLayer : MonoBehaviour
             yield return new WaitForSeconds(1f);
             shieldTimer++;
         }
+        isShieldBreak = false; // Reset shield break status after cooldown
         
     }
 
@@ -186,6 +194,9 @@ public class PLayer : MonoBehaviour
             {
                 shield.SetActive(false);
                 isShieldActive = false;
+                isShieldBreak = true;
+                shieldTimer = 0f;
+                StartCoroutine(ShieldTimerCount());
                 Instantiate(explosion_effect, transform.position, Quaternion.identity);
                 Destroy(collision.gameObject);
                 
@@ -215,6 +226,9 @@ public class PLayer : MonoBehaviour
             {
                 shield.SetActive(false);
                 isShieldActive = false;
+                isShieldBreak = true;
+                shieldTimer = 0f;
+                StartCoroutine(ShieldTimerCount());
                 StartCoroutine(ActivateSmallShield());
             }
         }
